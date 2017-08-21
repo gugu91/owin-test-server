@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Web;
-using Castle.MicroKernel.Lifestyle;
+﻿using Castle.MicroKernel.Lifestyle;
 using Castle.Windsor;
 using Owin;
 
-namespace Api.IoC
+namespace Api.IoC.Extensions
 {
-    public static class AppBuilderExtensions
+    public static class AppBuilderWindsorExtensions
     {
         public static IAppBuilder UseWindsorScopeMidddleware(this IAppBuilder appBuilder, IWindsorContainer container)
         {

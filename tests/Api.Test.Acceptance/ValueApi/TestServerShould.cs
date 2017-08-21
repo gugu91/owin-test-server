@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Api.Dependency;
+using Castle.MicroKernel.Registration;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
@@ -38,6 +39,11 @@ namespace Api.Test.Acceptance.ValueApi
                     StatusCode = HttpStatusCode.OK,
                     Content = new ByteArrayContent(Encoding.UTF8.GetBytes(Expected))
                 });
+        }
+
+        protected override void OverrideComponent(IRegistration componentRegistration)
+        {
+            TestableStartup.OvverideComponent(componentRegistration);
         }
     }
 }

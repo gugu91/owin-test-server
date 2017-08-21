@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Web.Http;
-using System.Web.Routing;
+﻿using System.Web.Http;
 using Api;
 using Api.IoC;
-using Castle.MicroKernel.Lifestyle;
+using Api.IoC.Extensions;
 using Castle.Windsor;
 using Microsoft.Owin;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
 using Owin;
 
 [assembly: OwinStartup(typeof(Startup))]
@@ -18,15 +12,20 @@ namespace Api
 {
     public class Startup
     {
-        public static IWindsorContainer Container { get; private set; }
+        protected static readonly IWindsorContainer Container = new WindsorContainer();
+
 
         public void Configuration(IAppBuilder appBuilder)
         {
             var config = new HttpConfiguration();
 
-            Container = WindsorStartup.Configuration(config);
-            SerializationStartup.Configuration(config);
-            RouteStartup.Configuration(config);
+            Container.Install(
+                new ControllerInstaller(), 
+                new DependencyInstaller());
+
+            config.UseWindsorContainer(Container);
+            config.UseDefaultJsonConverter();
+            config.UseDefaultRoutes();
 
             appBuilder
                 .UseWindsorScopeMidddleware(Container)

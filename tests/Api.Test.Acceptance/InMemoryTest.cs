@@ -34,13 +34,10 @@ namespace Api.Test.Acceptance
         protected void OvverideComponent<T>(Func<T> factoryMethod, string instanceName= null) where T : class
         {
             var component = Component.For(typeof(T)).UsingFactoryMethod(factoryMethod).IsDefault();
-            OvverideComponent(instanceName != null ? component.Named(instanceName) : component);
+            OverrideComponent(instanceName != null ? component.Named(instanceName) : component);
         }
 
-        protected void OvverideComponent(IRegistration toRegister)
-        { 
-            Startup.Container.Register(toRegister);
-        }
+        protected abstract void OverrideComponent(IRegistration componentRegistration);
 
         private static int FreeTcpPort()
         {

@@ -115,14 +115,13 @@
   <ItemGroup>
     <Compile Include="Dependency\HttpClientStub.cs" />
     <Compile Include="Dependency\IHttpClient.cs" />
-    <Compile Include="IoC\AppBuilderExtensions.cs" />
-    <Compile Include="IoC\ControllerInstaller.cs" />
+    <Compile Include="IoC\Extensions\AppBuilderWindsorExtensions.cs" />
+    <Compile Include="IoC\Installer\ControllerInstaller.cs" />
     <Compile Include="Controllers\TestServerController.cs" />
-    <Compile Include="IoC\DependencyInstaller.cs" />
-    <Compile Include="IoC\WindsorStartup.cs" />
+    <Compile Include="IoC\Installer\DependencyInstaller.cs" />
+    <Compile Include="IoC\Extensions\HttpConfigurationWindsorExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RouteStartup.cs" />
-    <Compile Include="SerializationStartup.cs" />
+    <Compile Include="HttpConfigurationExtensions.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="IoC\WindsorDependencyScope.cs" />
     <Compile Include="IoC\WindsorHttpDependencyResolver.cs" />

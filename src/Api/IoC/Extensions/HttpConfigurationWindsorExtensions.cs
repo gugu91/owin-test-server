@@ -1,22 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Web;
 using System.Web.Http;
 using Castle.MicroKernel;
 using Castle.MicroKernel.Handlers;
 using Castle.Windsor;
 using Castle.Windsor.Diagnostics;
 
-namespace Api.IoC
+namespace Api.IoC.Extensions
 {
-    public class WindsorStartup
+    public static class HttpConfigurationWindsorExtensions
     {
-        public static IWindsorContainer Configuration(HttpConfiguration configuration)
+        public static IWindsorContainer UseWindsorContainer(this HttpConfiguration configuration, IWindsorContainer container)
         {
-            var container = new WindsorContainer();
-            container.Install(new ControllerInstaller(), new DependencyInstaller());
             configuration.DependencyResolver = new WindsorHttpDependencyResolver(container);
             CheckForPotentiallyMisconfiguredComponents(container);
 
