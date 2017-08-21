@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Http;
 using System.Web.Routing;
 using Api;
 using Api.IoC;
+using Castle.MicroKernel.Lifestyle;
 using Castle.Windsor;
 using Microsoft.Owin;
 using Newtonsoft.Json;
@@ -16,15 +18,19 @@ namespace Api
 {
     public class Startup
     {
+        public static IWindsorContainer Container { get; private set; }
+
         public void Configuration(IAppBuilder appBuilder)
         {
             var config = new HttpConfiguration();
 
-            WindsorStartup.Configuration(config);
+            Container = WindsorStartup.Configuration(config);
             SerializationStartup.Configuration(config);
             RouteStartup.Configuration(config);
 
-            appBuilder.UseWebApi(config);
+            appBuilder
+                .UseWindsorScopeMidddleware(Container)
+                .UseWebApi(config);
         }
     }
 }

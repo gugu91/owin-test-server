@@ -12,7 +12,7 @@ namespace Api
             container.Register(
                 Classes.FromThisAssembly()
                 .BasedOn<IHttpController>()
-                .LifestylePerWebRequest());
+                .LifestyleScoped());
         }
     }
 }

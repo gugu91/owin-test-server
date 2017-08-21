@@ -14,11 +14,9 @@ namespace Api.Controllers
             _dependency = dependency;
         }
 
-        public async Task<string> Get()
+        public async Task<HttpResponseMessage> Get()
         {
-            var response = await _dependency.GetAsync("http://www.any.com");
-
-            return await response.Content.ReadAsStringAsync();
+            return await _dependency.GetAsync("http://www.any.com");
         }
 
     }
