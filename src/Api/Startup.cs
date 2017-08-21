@@ -28,7 +28,7 @@ namespace Api
             config.UseDefaultRoutes();
 
             appBuilder
-                .UseWindsorScopeMidddleware(Container)
+                .UseWindsorScopeMidddleware()
                 .UseWebApi(config);
         }
     }

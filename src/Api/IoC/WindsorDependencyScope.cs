@@ -10,7 +10,6 @@ namespace Api
     internal class WindsorDependencyScope : IDependencyScope
     {
         private readonly IWindsorContainer _container;
-        private readonly IDisposable _scope;
 
         public WindsorDependencyScope(IWindsorContainer container)
         {
@@ -20,7 +19,6 @@ namespace Api
             }
 
             _container = container;
-            _scope = container.BeginScope();
         }
 
         public object GetService(Type t)
@@ -37,7 +35,6 @@ namespace Api
 
         public void Dispose()
         {
-            _scope.Dispose();
         }
     }
 }
