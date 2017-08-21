@@ -1,10 +1,9 @@
 using Api.Dependency;
-using Asos.Customer.Recs.Http;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Api
+namespace Api.IoC
 {
     public class DependencyInstaller : IWindsorInstaller
     {

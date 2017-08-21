@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Asos.Customer.Recs.Http;
+using Api.Dependency;
 using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;

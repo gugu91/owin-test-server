@@ -35,9 +35,10 @@ namespace Api.IoC
             var message = new StringBuilder();
             var inspector = new DependencyInspector(message);
 
-            foreach (IExposeDependencyInfo handler in handlers)
+            foreach (var handler in handlers)
             {
-                handler.ObtainDependencyDetails(inspector);
+                var exposeDependencyInfo = (IExposeDependencyInfo) handler;
+                exposeDependencyInfo.ObtainDependencyDetails(inspector);
             }
 
             throw new ApplicationException(message.ToString());
