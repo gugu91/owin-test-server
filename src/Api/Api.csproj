@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dependency\HttpClientStub.cs" />
+    <Compile Include="IoC\AppBuilderExtensions.cs" />
     <Compile Include="IoC\ControllerInstaller.cs" />
     <Compile Include="Controllers\TestServerController.cs" />
     <Compile Include="IoC\DependencyInstaller.cs" />

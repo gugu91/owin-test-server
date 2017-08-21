@@ -14,7 +14,7 @@ namespace Api.Test.Acceptance.ValueApi
     {
         private const string Expected = "Test server tested...";
 
-        [Test(Description = "Return correct body When I make a GET request to /testserver route")]
+        [TestCase(TestName = "Return correct body When I make a GET request to /testserver route")]
         public async Task Return_correct_body_When_I_make_a_request_to_TestServerController_Get()
         {
             var httpClient = 
