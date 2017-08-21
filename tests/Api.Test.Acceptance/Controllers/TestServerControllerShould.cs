@@ -8,15 +8,14 @@ using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace Api.Test.Acceptance.ValueApi
+namespace Api.Test.Acceptance.Controllers
 {
-    [TestFixture]
-    public class TestServerShould : InMemoryTest
+    public class TestServerControllerShould : WindsorSelfHostingTest
     {
         private const string Expected = "Test server tested...";
 
         [TestCase(TestName = "Return correct body When I make a GET request to /testserver route")]
-        public async Task Return_correct_body_When_I_make_a_request_to_TestServerController_Get()
+        public async Task Return_correct_body_When_I_make_a_request_to_Get()
         {
             var httpClient = 
                 Substitute.For<IHttpClient>();

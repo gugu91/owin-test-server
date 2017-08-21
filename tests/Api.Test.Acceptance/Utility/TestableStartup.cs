@@ -1,6 +1,6 @@
 using Castle.MicroKernel.Registration;
 
-namespace Api.Test.Acceptance
+namespace Api.Test.Acceptance.Utility
 {
     public class TestableStartup : Startup
     {

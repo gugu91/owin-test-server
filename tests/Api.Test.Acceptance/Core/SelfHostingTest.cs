@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Sockets;
-using Castle.MicroKernel.Registration;
 using Microsoft.Owin.Hosting;
 using NUnit.Framework;
 
 namespace Api.Test.Acceptance
 {
     [TestFixture]
-    public abstract class InMemoryTest
+    public abstract class SelfHostingTest
     {
         private IDisposable _app;
         protected HttpClient HttpClient;
@@ -30,14 +27,6 @@ namespace Api.Test.Acceptance
         {
             _app.Dispose();
         }
-
-        protected void OvverideComponent<T>(Func<T> factoryMethod, string instanceName= null) where T : class
-        {
-            var component = Component.For(typeof(T)).UsingFactoryMethod(factoryMethod).IsDefault();
-            OverrideComponent(instanceName != null ? component.Named(instanceName) : component);
-        }
-
-        protected abstract void OverrideComponent(IRegistration componentRegistration);
 
         private static int FreeTcpPort()
         {
