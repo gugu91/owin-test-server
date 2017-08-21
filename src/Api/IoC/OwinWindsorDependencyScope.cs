@@ -2,20 +2,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http.Dependencies;
-using Castle.MicroKernel.Lifestyle;
 using Castle.Windsor;
 
-namespace Api
+namespace Api.IoC
 {
-    internal class WindsorDependencyScope : IDependencyScope
+    /// <summary>
+    /// This class won't create or dispose scope as it assumes this is done at Owin level, so that scope can be
+    /// unique between middlewares and web api
+    /// </summary>
+    internal class OwinWindsorDependencyScope : IDependencyScope
     {
         private readonly IWindsorContainer _container;
 
-        public WindsorDependencyScope(IWindsorContainer container)
+        public OwinWindsorDependencyScope(IWindsorContainer container)
         {
             if (container == null)
             {
-                throw new ArgumentNullException("container");
+                throw new ArgumentNullException(nameof(container));
             }
 
             _container = container;

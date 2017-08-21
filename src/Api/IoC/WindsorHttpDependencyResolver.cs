@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http.Dependencies;
+using Api.IoC;
 using Castle.Windsor;
 
 namespace Api
@@ -35,7 +36,7 @@ namespace Api
 
         public IDependencyScope BeginScope()
         {
-            return new WindsorDependencyScope(_container);
+            return new OwinWindsorDependencyScope(_container);
         }
 
         public void Dispose()

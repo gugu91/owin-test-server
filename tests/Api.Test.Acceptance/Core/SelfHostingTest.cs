@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using Microsoft.Owin.Hosting;
 using NUnit.Framework;
 
-namespace Api.Test.Acceptance
+namespace Api.Test.Acceptance.Core
 {
     [TestFixture]
     public abstract class SelfHostingTest

@@ -3,6 +3,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Api.Dependency;
+using Api.Test.Acceptance.Core;
+using Api.Test.Acceptance.Utility;
 using Castle.MicroKernel.Registration;
 using FluentAssertions;
 using NSubstitute;

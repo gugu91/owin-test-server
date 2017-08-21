@@ -106,7 +106,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\SelfHostingTest.cs" />
-    <Compile Include="TestableStartup.cs" />
+    <Compile Include="Utility\TestableStartup.cs" />
     <Compile Include="Controllers\TestServerControllerShould.cs" />
     <Compile Include="Core\WindsorSelfHostingTest.cs" />
   </ItemGroup>
