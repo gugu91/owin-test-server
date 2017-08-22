@@ -22,8 +22,8 @@ namespace Api.Test.Acceptance.Controllers
             var httpClient = 
                 Substitute.For<IHttpClient>();
             httpClient.GetAsync(Arg.Any<string>())
-                .Returns(GetMockedResponse());
-            OvverideComponent(() => httpClient);
+                .Returns(GetMockedResponse(Expected));
+            OverrideComponent(() => httpClient);
 
             var response = await HttpClient.GetAsync("/testserver");
             var body = await response.Content.ReadAsByteArrayAsync();
@@ -32,13 +32,13 @@ namespace Api.Test.Acceptance.Controllers
             str.Should().Be(Expected);
         }
 
-        private static Task<HttpResponseMessage> GetMockedResponse()
+        private static Task<HttpResponseMessage> GetMockedResponse(string expectedResponse)
         {
             return Task.FromResult(
                 new HttpResponseMessage
                 {
                     StatusCode = HttpStatusCode.OK,
-                    Content = new ByteArrayContent(Encoding.UTF8.GetBytes(Expected))
+                    Content = new ByteArrayContent(Encoding.UTF8.GetBytes(expectedResponse))
                 });
         }
 

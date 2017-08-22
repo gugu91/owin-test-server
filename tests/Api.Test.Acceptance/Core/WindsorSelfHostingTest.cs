@@ -5,7 +5,7 @@ namespace Api.Test.Acceptance.Core
 {
     public abstract class WindsorSelfHostingTest : SelfHostingTest
     {
-        protected void OvverideComponent<T>(Func<T> factoryMethod, string instanceName = null) where T : class
+        protected void OverrideComponent<T>(Func<T> factoryMethod, string instanceName = null) where T : class
         {
             var component = Component.For(typeof(T)).UsingFactoryMethod(factoryMethod).IsDefault();
             OverrideComponent(instanceName != null ? component.Named(instanceName) : component);
